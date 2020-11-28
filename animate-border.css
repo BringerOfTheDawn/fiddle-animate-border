@@ -1,0 +1,471 @@
+/**
+replace "transparent" for background-color
+replace "black" for border-color
+ */
+
+.animate-border-top {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x;
+    background-size: 100% calc(100% - 1px),
+    15px 1px;
+    background-position: 0px 1px,
+    0px 0px;
+
+    animation: animate-border-top-only 4s infinite linear;
+}
+
+@keyframes animate-border-top-only {
+    0% {
+        background-position: 0px 1px,
+        0px 0px;
+    }
+    100% {
+        background-position: 0px 1px,
+        100% 0px;
+    }
+}
+
+.animate-border-bottom {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x;
+    background-size: 100% calc(100% - 1px),
+    15px 1px;
+    background-position: 0px 0px,
+    100% 100%;
+
+    animation: animate-border-bottom-only 4s infinite linear;
+}
+
+@keyframes animate-border-bottom-only {
+    0% {
+        background-position: 0px 0px,
+        100% 100%;
+    }
+    100% {
+        background-position: 0px 0px,
+        0px 100%;
+    }
+}
+
+.animate-border-left {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-y;
+    background-size: calc(100% - 1px) 100%,
+    1px 15px;
+    background-position: 1px 0px,
+    0px 100%;
+
+    animation: animate-border-left-only 4s infinite linear;
+}
+
+@keyframes animate-border-left-only {
+    0% {
+        background-position: 1px 0px,
+        0px 100%;
+    }
+    100% {
+        background-position: 1px 0px,
+        0px 0px;
+    }
+}
+
+.animate-border-right {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-y;
+    background-size: calc(100% - 1px) 100%,
+    1px 15px;
+    background-position: 0px 0px,
+    100% 0px;
+
+    animation: animate-border-right-only 4s infinite linear;
+}
+
+@keyframes animate-border-right-only {
+    0% {
+        background-position: 0px 0px,
+        100% 0px;
+    }
+    100% {
+        background-position: 0px 0px,
+        100% 100%;
+    }
+}
+
+
+.animate-border-top.animate-border-bottom {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-x;
+    background-size: 100% calc(100% - 2px),
+    15px 1px,
+    15px 1px;
+    background-position: 0px 1px,
+    0px 0px,
+    100% 100%;
+
+    animation: animate-border-top-bottom 4s infinite linear;
+}
+
+@keyframes animate-border-top-bottom {
+    0% {
+        background-position: 0px 1px,
+        0px 0px,
+        100% 100%;
+    }
+    100% {
+        background-position: 0px 1px,
+        100% 0px,
+        0px 100%;
+    }
+}
+
+
+.animate-border-left.animate-border-right {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-y,
+    repeat-y;
+    background-size: calc(100% - 2px) 100%,
+    1px 15px,
+    1px 15px;
+    background-position: 1px 0px,
+    0px 100%,
+    100% 0px;
+
+    animation: animate-border-left-right 4s infinite linear;
+}
+
+@keyframes animate-border-left-right {
+    0% {
+        background-position: 1px 0px,
+        0px 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 1px 0px,
+        0px 0px,
+        100% 100%;
+    }
+}
+
+
+.animate-border-top.animate-border-left {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 1px),
+    15px 1px,
+    1px 15px;
+    background-position: 1px 1px,
+    0px 0px,
+    0px 100%;
+
+    animation: animate-border-top-left 4s infinite linear;
+}
+
+@keyframes animate-border-top-left {
+    0% {
+        background-position: 1px 1px,
+        0px 0px,
+        0px 100%;
+    }
+    100% {
+        background-position: 1px 1px,
+        100% 0px,
+        0px 0px;
+    }
+}
+
+
+.animate-border-top.animate-border-right {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 1px),
+    15px 1px,
+    1px 15px;
+    background-position: 0px 1px,
+    0px 0px,
+    100% 0px;
+
+    animation: animate-border-top-right 4s infinite linear;
+}
+
+@keyframes animate-border-top-right {
+    0% {
+        background-position: 0px 1px,
+        0px 0px,
+        100% 0px;
+    }
+    100% {
+        background-position: 0px 1px,
+        100% 0px,
+        100% 100%;
+    }
+}
+
+.animate-border-bottom.animate-border-left {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 1px),
+    15px 1px,
+    1px 15px;
+    background-position: 1px 0px,
+    100% 100%,
+    0px 100%;
+
+    animation: animate-border-bottom-left 4s infinite linear;
+}
+
+@keyframes animate-border-bottom-left {
+    0% {
+        background-position: 1px 0px,
+        100% 100%,
+        0px 100%;
+    }
+    100% {
+        background-position: 1px 0px,
+        0px 100%,
+        0px 0px;
+    }
+}
+
+.animate-border-bottom.animate-border-right {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 1px),
+    15px 1px,
+    1px 15px;
+    background-position: 0px 0px,
+    100% 100%,
+    100% 0px;
+
+    animation: animate-border-bottom-right 4s infinite linear;
+}
+
+@keyframes animate-border-bottom-right {
+    0% {
+        background-position: 0px 0px,
+        100% 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 0px 0px,
+        0px 100%,
+        100% 100%;
+    }
+}
+
+.animate-border-right.animate-border-bottom.animate-border-left {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y,
+    repeat-y;
+    background-size: calc(100% - 2px) calc(100% - 1px),
+    15px 1px,
+    1px 15px,
+    1px 15px;
+    background-position: 1px 0px,
+    100% 100%,
+    0px 100%,
+    100% 0px;
+
+    animation: animate-border-right-bottom-left 4s infinite linear;
+}
+
+@keyframes animate-border-right-bottom-left {
+    0% {
+        background-position: 1px 0px,
+        100% 100%,
+        0px 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 1px 0px,
+        0px 100%,
+        0px 0px,
+        100% 100%;
+    }
+}
+
+.animate-border-right.animate-border-top.animate-border-left {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-y,
+    repeat-y;
+    background-size: calc(100% - 2px) calc(100% - 1px),
+    15px 1px,
+    1px 15px,
+    1px 15px;
+    background-position: 1px 1px,
+    0px 0px,
+    0px 100%,
+    100% 0px;
+
+    animation: animate-border-right-top-left 4s infinite linear;
+}
+
+@keyframes animate-border-right-top-left {
+    0% {
+        background-position: 1px 1px,
+        0px 0px,
+        0px 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 1px 1px,
+        100% 0px,
+        0px 0px,
+        100% 100%;
+    }
+}
+
+.animate-border-right.animate-border-top.animate-border-bottom {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 2px),
+    15px 1px,
+    15px 1px,
+    1px 15px;
+    background-position: 0px 1px,
+    0px 0px,
+    100% 100%,
+    100% 0px;
+
+    animation: animate-border-right-top-bottom 4s infinite linear;
+}
+
+@keyframes animate-border-right-top-bottom {
+    0% {
+        background-position: 0px 1px,
+        0px 0px,
+        100% 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 0px 1px,
+        100% 0px,
+        0px 100%,
+        100% 100%;
+    }
+}
+
+.animate-border-left.animate-border-top.animate-border-bottom {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-x,
+    repeat-y;
+    background-size: calc(100% - 1px) calc(100% - 2px),
+    15px 1px,
+    15px 1px,
+    1px 15px;
+    background-position: 1px 1px,
+    0px 0px,
+    100% 100%,
+    0px 100%;
+
+    animation: animate-border-left-top-bottom 4s infinite linear;
+}
+
+@keyframes animate-border-left-top-bottom {
+    0% {
+        background-position: 1px 1px,
+        0px 0px,
+        100% 100%,
+        0px 100%;
+    }
+    100% {
+        background-position: 1px 1px,
+        100% 0px,
+        0px 100%,
+        0px 0px;
+    }
+}
+
+.animate-border-left.animate-border-top.animate-border-bottom.animate-border-right,
+.animate-border-all {
+    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(90deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%),
+    linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: no-repeat,
+    repeat-x,
+    repeat-x,
+    repeat-y,
+    repeat-y;
+    background-size: calc(100% - 2px) calc(100% - 2px),
+    15px 1px,
+    15px 1px,
+    1px 15px,
+    1px 15px;
+    background-position: 1px 1px,
+    0px 0px,
+    100% 100%,
+    0px 100%,
+    100% 0px;
+
+    animation: animate-border-all 4s infinite linear;
+}
+
+@keyframes animate-border-all {
+    0% {
+        background-position: 1px 1px,
+        0px 0px,
+        100% 100%,
+        0px 100%,
+        100% 0px;
+    }
+    100% {
+        background-position: 1px 1px,
+        100% 0px,
+        0px 100%,
+        0px 0px,
+        100% 100%;
+    }
+}
