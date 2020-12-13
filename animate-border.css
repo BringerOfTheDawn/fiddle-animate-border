@@ -1,471 +1,289 @@
-/**
-replace "transparent" for background-color
-replace "black" for border-color
- */
+.animate-border-left,
+.animate-border-top,
+.animate-border-bottom,
+.animate-border-right,
+.animate-border-all {
+    --border-color: black;
+    --background-color: transparent;
+    --border-width: 2px;
+    --line-length: 10px;
+
+    --max-position: 10000px; /* has to be a large number not 100% otherwise speed will be unequal when element is not a square */
+    --speed: 300s; /* seconds to match the large number */
+}
+
+.animate-border-left,
+.animate-border-top,
+.animate-border-bottom,
+.animate-border-right,
+.animate-border-all {
+    --image-background: linear-gradient(90deg, var(--background-color) 50%, var(--background-color) 50%);
+    --image-horizontal: linear-gradient(90deg, var(--border-color) 50%, var(--background-color) 50%);
+    --image-vertical: linear-gradient(0deg, var(--border-color) 50%, var(--background-color) 50%);
+    --size-horizontal: calc(2 * var(--line-length)) var(--border-width);
+    --size-vertical: var(--border-width) calc(2 * var(--line-length));
+    --position-top-start: 0 0;
+    --position-top-end: var(--max-position) 0px;
+    --position-bottom-start: var(--max-position) 100%;
+    --position-bottom-end: 0 100%;
+    --position-left-start: 0 var(--max-position);
+    --position-left-end: 0 0;
+    --position-right-start: 100% 0px;
+    --position-right-end: 100% var(--max-position);
+}
 
 .animate-border-top {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x;
-    background-size: 100% calc(100% - 1px),
-    15px 1px;
-    background-position: 0px 1px,
-    0px 0px;
-
-    animation: animate-border-top-only 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal);
+    background-repeat: no-repeat, repeat-x;
+    background-size: 100% calc(100% - var(--border-width)), var(--size-horizontal);
+    background-position: 0 var(--border-width), var(--position-top-start);
+    animation: animate-border-top-only var(--speed) infinite linear;
 }
 
 @keyframes animate-border-top-only {
     0% {
-        background-position: 0px 1px,
-        0px 0px;
+        background-position: 0 var(--border-width), var(--position-top-start);
     }
     100% {
-        background-position: 0px 1px,
-        100% 0px;
+        background-position: 0 var(--border-width), var(--position-top-end);
     }
 }
 
 .animate-border-bottom {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x;
-    background-size: 100% calc(100% - 1px),
-    15px 1px;
-    background-position: 0px 0px,
-    100% 100%;
-
-    animation: animate-border-bottom-only 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal);
+    background-repeat: no-repeat, repeat-x;
+    background-size: 100% calc(100% - var(--border-width)), var(--size-horizontal);
+    background-position: 0 0, var(--position-bottom-start);
+    animation: animate-border-bottom-only var(--speed) infinite linear;
 }
 
 @keyframes animate-border-bottom-only {
     0% {
-        background-position: 0px 0px,
-        100% 100%;
+        background-position: 0 0, var(--position-bottom-start);
     }
     100% {
-        background-position: 0px 0px,
-        0px 100%;
+        background-position: 0 0, var(--position-bottom-end);
     }
 }
 
 .animate-border-left {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-y;
-    background-size: calc(100% - 1px) 100%,
-    1px 15px;
-    background-position: 1px 0px,
-    0px 100%;
-
-    animation: animate-border-left-only 4s infinite linear;
+    background-image: var(--image-background), var(--image-vertical);
+    background-repeat: no-repeat, repeat-y;
+    background-size: calc(100% - var(--border-width)) 100%, var(--size-vertical);
+    background-position: var(--border-width) 0, var(--position-left-start);
+    animation: animate-border-left-only var(--speed) infinite linear;
 }
 
 @keyframes animate-border-left-only {
     0% {
-        background-position: 1px 0px,
-        0px 100%;
+        background-position: var(--border-width) 0, var(--position-left-start);
     }
     100% {
-        background-position: 1px 0px,
-        0px 0px;
+        background-position: var(--border-width) 0, var(--position-left-end);
     }
 }
 
 .animate-border-right {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-y;
-    background-size: calc(100% - 1px) 100%,
-    1px 15px;
-    background-position: 0px 0px,
-    100% 0px;
-
-    animation: animate-border-right-only 4s infinite linear;
+    background-image: var(--image-background), var(--image-vertical);
+    background-repeat: no-repeat, repeat-y;
+    background-size: calc(100% - var(--border-width)) 100%, var(--size-vertical);
+    background-position: 0 0, var(--position-right-start);
+    animation: animate-border-right-only var(--speed) infinite linear;
 }
 
 @keyframes animate-border-right-only {
     0% {
-        background-position: 0px 0px,
-        100% 0px;
+        background-position: 0 0, var(--position-right-start);
     }
     100% {
-        background-position: 0px 0px,
-        100% 100%;
+        background-position: 0 0, var(--position-right-end);
     }
 }
 
-
 .animate-border-top.animate-border-bottom {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-x;
-    background-size: 100% calc(100% - 2px),
-    15px 1px,
-    15px 1px;
-    background-position: 0px 1px,
-    0px 0px,
-    100% 100%;
-
-    animation: animate-border-top-bottom 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-horizontal);
+    background-repeat: no-repeat, repeat-x, repeat-x;
+    background-size: 100% calc(100% - (2 * var(--border-width))), var(--size-horizontal), var(--size-horizontal);
+    background-position: 0 var(--border-width), var(--position-top-start), var(--position-bottom-start);
+    animation: animate-border-top-bottom var(--speed) infinite linear;
 }
 
 @keyframes animate-border-top-bottom {
     0% {
-        background-position: 0px 1px,
-        0px 0px,
-        100% 100%;
+        background-position: 0 var(--border-width), var(--position-top-start), var(--position-bottom-start);
     }
     100% {
-        background-position: 0px 1px,
-        100% 0px,
-        0px 100%;
+        background-position: 0 var(--border-width), var(--position-top-end), var(--position-bottom-end);
     }
 }
 
-
 .animate-border-left.animate-border-right {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-y,
-    repeat-y;
-    background-size: calc(100% - 2px) 100%,
-    1px 15px,
-    1px 15px;
-    background-position: 1px 0px,
-    0px 100%,
-    100% 0px;
-
-    animation: animate-border-left-right 4s infinite linear;
+    background-image: var(--image-background), var(--image-vertical), var(--image-vertical);
+    background-repeat: no-repeat, repeat-y, repeat-y;
+    background-size: calc(100% - (2 * var(--border-width))) 100%, var(--size-vertical), var(--size-vertical);
+    background-position: var(--border-width) 0, var(--position-left-start), var(--position-right-start);
+    animation: animate-border-left-right var(--speed) infinite linear;
 }
 
 @keyframes animate-border-left-right {
     0% {
-        background-position: 1px 0px,
-        0px 100%,
-        100% 0px;
+        background-position: var(--border-width) 0, var(--position-left-start), var(--position-right-start);
     }
     100% {
-        background-position: 1px 0px,
-        0px 0px,
-        100% 100%;
+        background-position: var(--border-width) 0, var(--position-left-end), var(--position-right-end);
     }
 }
 
-
 .animate-border-top.animate-border-left {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 1px),
-    15px 1px,
-    1px 15px;
-    background-position: 1px 1px,
-    0px 0px,
-    0px 100%;
-
-    animation: animate-border-top-left 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical);
+    background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-left-start);
+    animation: animate-border-top-left var(--speed) infinite linear;
 }
 
 @keyframes animate-border-top-left {
     0% {
-        background-position: 1px 1px,
-        0px 0px,
-        0px 100%;
+        background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-left-start);
     }
     100% {
-        background-position: 1px 1px,
-        100% 0px,
-        0px 0px;
+        background-position: var(--border-width) var(--border-width), var(--position-top-end), var(--position-left-end);
     }
 }
 
-
 .animate-border-top.animate-border-right {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 1px),
-    15px 1px,
-    1px 15px;
-    background-position: 0px 1px,
-    0px 0px,
-    100% 0px;
-
-    animation: animate-border-top-right 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical);
+    background-position: 0 var(--border-width), var(--position-top-start), var(--position-right-start);
+    animation: animate-border-top-right var(--speed) infinite linear;
 }
 
 @keyframes animate-border-top-right {
     0% {
-        background-position: 0px 1px,
-        0px 0px,
-        100% 0px;
+        background-position: 0 var(--border-width), var(--position-top-start), var(--position-right-start);
     }
     100% {
-        background-position: 0px 1px,
-        100% 0px,
-        100% 100%;
+        background-position: 0 var(--border-width), var(--position-top-end), var(--position-right-end);
     }
 }
 
 .animate-border-bottom.animate-border-left {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 1px),
-    15px 1px,
-    1px 15px;
-    background-position: 1px 0px,
-    100% 100%,
-    0px 100%;
-
-    animation: animate-border-bottom-left 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical);
+    background-position: var(--border-width) 0, var(--position-bottom-start), var(--position-left-start);
+    animation: animate-border-bottom-left var(--speed) infinite linear;
 }
 
 @keyframes animate-border-bottom-left {
     0% {
-        background-position: 1px 0px,
-        100% 100%,
-        0px 100%;
+        background-position: var(--border-width) 0, var(--position-bottom-start), var(--position-left-start);
     }
     100% {
-        background-position: 1px 0px,
-        0px 100%,
-        0px 0px;
+        background-position: var(--border-width) 0, var(--position-bottom-end), var(--position-left-end);
     }
 }
 
 .animate-border-bottom.animate-border-right {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 1px),
-    15px 1px,
-    1px 15px;
-    background-position: 0px 0px,
-    100% 100%,
-    100% 0px;
-
-    animation: animate-border-bottom-right 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical);
+    background-position: 0 0, var(--position-bottom-start), var(--position-right-start);
+    animation: animate-border-bottom-right var(--speed) infinite linear;
 }
 
 @keyframes animate-border-bottom-right {
     0% {
-        background-position: 0px 0px,
-        100% 100%,
-        100% 0px;
+        background-position: 0 0, var(--position-bottom-start), var(--position-right-start);
     }
     100% {
-        background-position: 0px 0px,
-        0px 100%,
-        100% 100%;
+        background-position: 0 0, var(--position-bottom-end), var(--position-right-end);
     }
 }
 
 .animate-border-right.animate-border-bottom.animate-border-left {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y,
-    repeat-y;
-    background-size: calc(100% - 2px) calc(100% - 1px),
-    15px 1px,
-    1px 15px,
-    1px 15px;
-    background-position: 1px 0px,
-    100% 100%,
-    0px 100%,
-    100% 0px;
-
-    animation: animate-border-right-bottom-left 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y, repeat-y;
+    background-size: calc(100% - (2 * var(--border-width))) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical), var(--size-vertical);
+    background-position: var(--border-width) 0, var(--position-bottom-start), var(--position-left-start), var(--position-right-start);
+    animation: animate-border-right-bottom-left var(--speed) infinite linear;
 }
 
 @keyframes animate-border-right-bottom-left {
     0% {
-        background-position: 1px 0px,
-        100% 100%,
-        0px 100%,
-        100% 0px;
+        background-position: var(--border-width) 0, var(--position-bottom-start), var(--position-left-start), var(--position-right-start);
     }
     100% {
-        background-position: 1px 0px,
-        0px 100%,
-        0px 0px,
-        100% 100%;
+        background-position: var(--border-width) 0, var(--position-bottom-end), var(--position-left-end), var(--position-right-end);
     }
 }
 
 .animate-border-right.animate-border-top.animate-border-left {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-y,
-    repeat-y;
-    background-size: calc(100% - 2px) calc(100% - 1px),
-    15px 1px,
-    1px 15px,
-    1px 15px;
-    background-position: 1px 1px,
-    0px 0px,
-    0px 100%,
-    100% 0px;
-
-    animation: animate-border-right-top-left 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-vertical), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-y, repeat-y;
+    background-size: calc(100% - (2 * var(--border-width))) calc(100% - var(--border-width)), var(--size-horizontal), var(--size-vertical), var(--size-vertical);
+    background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-left-start), var(--position-right-start);
+    animation: animate-border-right-top-left var(--speed) infinite linear;
 }
 
 @keyframes animate-border-right-top-left {
     0% {
-        background-position: 1px 1px,
-        0px 0px,
-        0px 100%,
-        100% 0px;
+        background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-left-start), var(--position-right-start);
     }
     100% {
-        background-position: 1px 1px,
-        100% 0px,
-        0px 0px,
-        100% 100%;
+        background-position: var(--border-width) var(--border-width), var(--position-top-end), var(--position-left-end), var(--position-right-end);
     }
 }
 
 .animate-border-right.animate-border-top.animate-border-bottom {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 2px),
-    15px 1px,
-    15px 1px,
-    1px 15px;
-    background-position: 0px 1px,
-    0px 0px,
-    100% 100%,
-    100% 0px;
-
-    animation: animate-border-right-top-bottom 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - (2 * var(--border-width))), var(--size-horizontal), var(--size-horizontal), var(--size-vertical);
+    background-position: 0 var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-right-start);
+    animation: animate-border-right-top-bottom var(--speed) infinite linear;
 }
 
 @keyframes animate-border-right-top-bottom {
     0% {
-        background-position: 0px 1px,
-        0px 0px,
-        100% 100%,
-        100% 0px;
+        background-position: 0 var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-right-start);
     }
     100% {
-        background-position: 0px 1px,
-        100% 0px,
-        0px 100%,
-        100% 100%;
+        background-position: 0 var(--border-width), var(--position-top-end), var(--position-bottom-end), var(--position-right-end);
     }
 }
 
 .animate-border-left.animate-border-top.animate-border-bottom {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-x,
-    repeat-y;
-    background-size: calc(100% - 1px) calc(100% - 2px),
-    15px 1px,
-    15px 1px,
-    1px 15px;
-    background-position: 1px 1px,
-    0px 0px,
-    100% 100%,
-    0px 100%;
-
-    animation: animate-border-left-top-bottom 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-horizontal), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-x, repeat-y;
+    background-size: calc(100% - var(--border-width)) calc(100% - (2 * var(--border-width))), var(--size-horizontal), var(--size-horizontal), var(--size-vertical);
+    background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-left-start);
+    animation: animate-border-left-top-bottom var(--speed) infinite linear;
 }
 
 @keyframes animate-border-left-top-bottom {
     0% {
-        background-position: 1px 1px,
-        0px 0px,
-        100% 100%,
-        0px 100%;
+        background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-left-start);
     }
     100% {
-        background-position: 1px 1px,
-        100% 0px,
-        0px 100%,
-        0px 0px;
+        background-position: var(--border-width) var(--border-width), var(--position-top-end), var(--position-bottom-end), var(--position-left-end);
     }
 }
 
 .animate-border-left.animate-border-top.animate-border-bottom.animate-border-right,
 .animate-border-all {
-    background-image: linear-gradient(90deg, transparent 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(90deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%),
-    linear-gradient(0deg, black 50%, transparent 50%);
-    background-repeat: no-repeat,
-    repeat-x,
-    repeat-x,
-    repeat-y,
-    repeat-y;
-    background-size: calc(100% - 2px) calc(100% - 2px),
-    15px 1px,
-    15px 1px,
-    1px 15px,
-    1px 15px;
-    background-position: 1px 1px,
-    0px 0px,
-    100% 100%,
-    0px 100%,
-    100% 0px;
-
-    animation: animate-border-all 4s infinite linear;
+    background-image: var(--image-background), var(--image-horizontal), var(--image-horizontal), var(--image-vertical), var(--image-vertical);
+    background-repeat: no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: calc(100% - (2 * var(--border-width))) calc(100% - (2 * var(--border-width))), var(--size-horizontal), var(--size-horizontal), var(--size-vertical), var(--size-vertical);
+    background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-left-start), var(--position-right-start);
+    animation: animate-border-all var(--speed) infinite linear;
 }
 
 @keyframes animate-border-all {
     0% {
-        background-position: 1px 1px,
-        0px 0px,
-        100% 100%,
-        0px 100%,
-        100% 0px;
+        background-position: var(--border-width) var(--border-width), var(--position-top-start), var(--position-bottom-start), var(--position-left-start), var(--position-right-start);
     }
     100% {
-        background-position: 1px 1px,
-        100% 0px,
-        0px 100%,
-        0px 0px,
-        100% 100%;
+        background-position: var(--border-width) var(--border-width), var(--position-top-end), var(--position-bottom-end), var(--position-left-end), var(--position-right-end);
     }
 }
